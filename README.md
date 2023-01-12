@@ -7,6 +7,8 @@
  4. run npm run dev
  5. scan the qr code.
  6. start chatting with the bot.
+
+
 This code is using several libraries to build a WhatsApp bot that communicates with OpenAI API.
 
 qrcode-terminal: is used to generate a QR code in the terminal for the user to scan with their WhatsApp application to connect the bot.
