@@ -6,7 +6,12 @@ import * as dotenv from 'dotenv';
 
 
 dotenv.config(); 
-const client = new Client();
+const client = new Client({
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        headless: false
+    }
+    });
 
 client.on('qr', qr => {
     qrcode.generate(qr, {small: true});
