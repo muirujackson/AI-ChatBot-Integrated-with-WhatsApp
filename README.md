@@ -28,6 +28,6 @@ It is worth noting that the script uses the environment variable for the OpenAI 
 This is how the app works. It responds to every query. 
 ![My Image](Capture.PNG)
 
-#If you are faced Cannot read properties of undefined (reading 'queryExists) bug
+# If you are faced Cannot read properties of undefined (reading 'queryExists) bug
 I changed: (node_modules/whatsapp-web.js/src/util/Injected.js) window.Store.QueryExist = window.mR.findModule('queryExists')[0].queryExists;
 to window.Store.QueryExist = window.mR.findModule('queryExists')[0] ? window.mR.findModule('queryExists')[0].queryExists : window.mR.findModule('queryExist')[0].queryWidExists;
