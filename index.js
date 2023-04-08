@@ -1,12 +1,19 @@
 import qrcode from 'qrcode-terminal';
+import pkg from 'whatsapp-web.js';
+const { Client, LocalAuth } = pkg;
 
-import { Client } from 'whatsapp-web.js';
 import { Configuration, OpenAIApi } from 'openai';
 import * as dotenv from 'dotenv'; 
 
 
-dotenv.config(); 
-const client = new Client();
+dotenv.config();
+
+const client = new Client({
+    authStrategy: new LocalAuth(),
+    puppeteer: {
+        headless: false
+    }
+    });
 
 client.on('qr', qr => {
     qrcode.generate(qr, {small: true});
@@ -39,7 +46,11 @@ const response = await openai.createCompletion({
 //response = response.json();
 const d = response.data.choices[0].text;
 
+if(!d.includes("package com.example.demo.controller")){
 client.sendMessage(message.from, d.trim() );
+}
+
+
 }
 catch(error){
     console.error(`error: ${error}`);
