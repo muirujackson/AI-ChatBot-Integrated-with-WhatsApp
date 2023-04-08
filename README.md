@@ -25,3 +25,9 @@ Then it takes the first choice of the response and sends it back to the user via
 The script also includes a try-catch block to handle errors and logs them to the console.
 
 It is worth noting that the script uses the environment variable for the OpenAI API key, which is being loaded from the .env file using the dotenv library.
+This is how the app works. It responds to every query. 
+![My Image](Capture.PNG)
+
+#If you are faced Cannot read properties of undefined (reading 'queryExists) bug
+I changed: (node_modules/whatsapp-web.js/src/util/Injected.js) window.Store.QueryExist = window.mR.findModule('queryExists')[0].queryExists;
+to window.Store.QueryExist = window.mR.findModule('queryExists')[0] ? window.mR.findModule('queryExists')[0].queryExists : window.mR.findModule('queryExist')[0].queryWidExists;
